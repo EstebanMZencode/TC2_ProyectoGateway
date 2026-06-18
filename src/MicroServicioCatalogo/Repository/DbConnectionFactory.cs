@@ -1,20 +1,21 @@
-﻿using Microsoft.Data.SqlClient;
-using System.Data;
+﻿using Microsoft.Extensions.Options;
+using MongoDB.Driver;
 
 namespace MicroServicioCatalogo.Repository
 {
     public class DbConnectionFactory : IDbConnectionFactory
     {
-        private readonly IConfiguration _configuration;
+        private readonly IMongoDatabase _database;
 
-        public DbConnectionFactory(IConfiguration configuration)
+        public DbConnectionFactory(IOptions<MongoDbSettings> settings)
         {
-            _configuration = configuration;
+            var mongoClient = new MongoClient(settings.Value.ConnectionString);
+            _database = mongoClient.GetDatabase(settings.Value.DatabaseName);
         }
 
-        public IDbConnection CreateConnection()
+        public IMongoCollection<TEntity> GetCollection<TEntity>(string collectionName)
         {
-            return new SqlConnection(_configuration.GetConnectionString("DefaultConnection"));
+            return _database.GetCollection<TEntity>(collectionName);
         }
     }
 }

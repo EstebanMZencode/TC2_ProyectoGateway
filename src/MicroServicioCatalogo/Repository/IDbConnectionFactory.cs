@@ -1,9 +1,9 @@
-﻿using System.Data;
+﻿using MongoDB.Driver;
 
 namespace MicroServicioCatalogo.Repository
 {
     public interface IDbConnectionFactory
     {
-        IDbConnection CreateConnection();
+        IMongoCollection<TEntity> GetCollection<TEntity>(string collectionName);
     }
 }
