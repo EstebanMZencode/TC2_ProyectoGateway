@@ -17,6 +17,8 @@ builder.Services.AddScoped<IProductoService, ProductoService>();
 
 var app = builder.Build();
 
+app.UsePathBase("https://tiusr23pl.cuc-carrera-ti.ac.cr/MicroServicioCatalogo");
+
 app.UseHttpsRedirection();
 
 app.MapProductoEndpoints();
