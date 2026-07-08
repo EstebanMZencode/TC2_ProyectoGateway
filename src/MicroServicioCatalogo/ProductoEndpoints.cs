@@ -25,7 +25,7 @@ namespace MicroServicioCatalogo
                 return MapearError(resultado.Resultado, resultado.MensajeError!);
             }
 
-            var ubicacion = $"{httpRequest.Scheme}://{httpRequest.Host}/api/productos/{resultado.Datos!.Sku}";
+            var ubicacion = $"{httpRequest.Scheme}://{httpRequest.Host}/MicroServicioCatalogo/api/productos/{resultado.Datos!.Sku}";
             return Results.Created(ubicacion, resultado.Datos);
         }
 
