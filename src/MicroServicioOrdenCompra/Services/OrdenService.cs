@@ -70,7 +70,7 @@ public class OrdenService : IOrdenService
 
             var item = new ItemOrden
             {
-                ProductoId = producto.Id,
+                ProductoId = producto.Id ?? producto.Sku,
                 Sku = producto.Sku,
                 NombreProducto = producto.Nombre,
                 Cantidad = itemDto.Cantidad,
