@@ -13,7 +13,6 @@ public class Orden
     public string NumeroOrden { get; set; } = string.Empty;
 
     [BsonElement("clienteId")]
-    [BsonRepresentation(BsonType.ObjectId)]
     public string ClienteId { get; set; } = string.Empty;
 
     [BsonElement("clienteResumen")]
@@ -47,7 +46,6 @@ public class ClienteResumen
 public class ItemOrden
 {
     [BsonElement("productoId")]
-    [BsonRepresentation(BsonType.ObjectId)]
     public string ProductoId { get; set; } = string.Empty;
 
     [BsonElement("sku")]
@@ -73,7 +71,6 @@ public class EstadoOrden
     public string? Id { get; set; }
 
     [BsonElement("ordenId")]
-    [BsonRepresentation(BsonType.ObjectId)]
     public string OrdenId { get; set; } = string.Empty;
 
     [BsonElement("estadoAnterior")]
